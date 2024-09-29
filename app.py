@@ -1,7 +1,6 @@
 
 import streamlit as st
 import openai
-from openai import AsyncOpenAI
 import json
 
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
@@ -20,7 +19,7 @@ def communicate():
     user_message = {"role": "user", "content": st.session_state["user_input"]}
     messages.append(user_message)
 
-    response = openai.ChatCompletion.create(
+    response = openai.chat.completions.create(
         model="gpt-4o-mini-2024-07-18",
         messages=messages
     )
